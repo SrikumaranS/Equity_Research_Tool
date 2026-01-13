@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Research Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Research</h2>
+    <button onclick="newChat()">➕ New Research</button>
+    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    <ul id="chatList"></ul>
+  </div>
+
+  <!-- Chat Area -->
+  <div class="chat-area">
+
+  <div class="url-box" id="urlBox">
+  <input id="url1" placeholder="Enter article URL 1 (required)" />
+  <input id="url2" placeholder="Enter article URL 2 (optional)" />
+  <button onclick="processUrls()">Process Articles</button>
+</div>
+
+
+  <div id="messages" class="messages"></div>
+
+  <div class="input-area">
+    <input id="userInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+</div>
+
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

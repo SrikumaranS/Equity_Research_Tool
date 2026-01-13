@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | AI Research</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-box">
+  <h2>Login</h2>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p class="switch-link">
+    Don’t have an account?
+    <a href="signup.html">Sign up</a>
+  </p>
+</div>
+
+<script>
+async function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const res = await fetch("http://localhost:5000/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (data.token) {
+    localStorage.setItem("token", data.token);
+    window.location.href = "index.html";
+  } else {
+    alert("Invalid login");
+  }
+}
+</script>
+
+</body>
+</html>

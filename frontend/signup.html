@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup | AI Research</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-box">
+  <h2>Create Account</h2>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="signup()">Sign Up</button>
+
+  <p class="switch-link">
+    Already have an account?
+    <a href="login.html">Login</a>
+  </p>
+</div>
+
+<script>
+async function signup() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const res = await fetch("http://localhost:5000/api/auth/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (data.user_id) {
+    alert("Signup successful. Please login.");
+    window.location.href = "login.html";
+  } else {
+    alert("Signup failed");
+  }
+}
+</script>
+
+</body>
+</html>

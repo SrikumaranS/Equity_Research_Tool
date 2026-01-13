@@ -1,0 +1,19 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+package-lock.json
+package.json
+
+# Environment variables
+.env
+
+# FAISS data
+faiss_store/
+faiss_store_cohere/
+
+# OS files
+.DS_Store
